@@ -1,0 +1,88 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<script name="jquery/jquery.js" library="primefaces"></script>
+	<title>Register User Phone Number</title>
+</h:head>
+<h:form>
+
+	<p:breadCrumb>
+		<p:menuitem value="Index" url="index.xhtml" />
+		<p:menuitem value="Add New User Number" url="addusernumber.xhtml" />
+	</p:breadCrumb>
+
+
+	<p:growl id="messages"></p:growl>
+	<p:panelGrid columns="2">
+		<p:outputLabel value="Enter User Phone ID:"></p:outputLabel>
+		<p:inputText value="#{addUserNumber.userPhoneNumber.userPhoneNumbersId}"></p:inputText>
+
+		<p:outputLabel value="Select Number:"></p:outputLabel>
+		<p:selectOneMenu id="no" value="#{addUserNumber.userPhoneNumber.no}">
+			
+			<p:ajax listener="#{addUserNumber.userPhoneNumber.getNo()}" update="no" />
+			
+			<f:selectItem itemLabel="Seclect Number" itemValue="" noSelectionOption="true" />
+			
+			<f:selectItem itemLabel="#{userPhoneNumber.getNo()}" itemValue="#{userPhoneNumber.getNo()]" noSelectionOption="true" />
+		
+		</p:selectOneMenu>
+
+		<p:outputLabel value="Select Type:"></p:outputLabel>
+		<p:selectOneMenu id="type"
+			value="#{addUserNumber.userPhoneNumber.type}">
+			<p:ajax listener="#{addUserNumber.userPhoneNumber.type}" update="no" />
+			<f:selectItem itemLabel="Seclect Type" itemValue=""
+				noSelectionOption="true" />
+			<f:selectItem itemLabel="Prapaid" itemValue="PA"
+				noSelectionOption="true" />
+			<f:selectItem itemLabel="Postpaid" itemValue="PO"
+				noSelectionOption="true" />
+		</p:selectOneMenu>
+
+		<p:outputLabel value="Seclect Main Package:"></p:outputLabel>
+		<p:selectOneMenu id="mainPackage"
+			
+			value="#{addUserNumber.userPhoneNumber.mainPackage}">
+			
+			<p:ajax listener="#{addUserNumber.userPhoneNumber.mainPackage}" update="mainPackage" />
+			
+			<f:selectItem itemLabel="Seclect MainPackage" itemValue=""noSelectionOption="true" />
+			
+			<f:selectItem itemLabel="Pro100" itemValue="100"noSelectionOption="true" />
+			
+			<f:selectItem itemLabel="Pro200" itemValue="200"noSelectionOption="true" />
+			
+			<f:selectItem itemLabel="Pro300" itemValue="300"noSelectionOption="true" />
+			
+			<f:selectItem itemLabel="Pro400" itemValue="400"noSelectionOption="true" />
+		
+		</p:selectOneMenu>
+
+		<p:outputLabel value="Select Register Date:"></p:outputLabel>
+		<p:calendar value="#{addUserNumber.userPhoneNumber.registerDate}"></p:calendar>
+		
+		<p:outputLabel value="Select Billing Date:"></p:outputLabel>
+		<p:calendar value="#{addUserNumber.userPhoneNumber.billingDate}"></p:calendar>
+
+		<p:outputLabel value="IsActive :"></p:outputLabel>
+		<p:inputText value="#{phoneNumber.getStatus()}"></p:inputText>
+
+	</p:panelGrid>
+
+	<br />
+	<br />
+	<p:commandButton value="RegisterUserNumber" action="#{addNumber.addNumber}"update="@form" />
+	<br />
+	<br />
+	<p:button outcome="showall" value="Show All Number" />
+	<br />
+	<br />
+	<p:button outcome="index" value="Cancel" />
+
+
+</h:form>
+</html>

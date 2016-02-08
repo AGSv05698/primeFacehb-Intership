@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<script name="jquery/jquery.js" library="primefaces"></script>
+	<title>Register Employee</title>
+</h:head>
+<h:form>
+	<p:growl id="messages"></p:growl>
+	<p:panelGrid columns="2">
+		<p:outputLabel value="Enter Employee Name:"></p:outputLabel>
+		<p:inputText value="#{registerEmployee.employee.empName}"></p:inputText>
+		<p:outputLabel value="Enter Employee Hire Date:"></p:outputLabel>
+		<p:calendar value="#{registerEmployee.employee.empHireDate}"></p:calendar>
+		<p:outputLabel value="Enter Employee Salary:"></p:outputLabel>
+
+		<p:inputText value="#{registerEmployee.employee.empSalary}"></p:inputText>
+	</p:panelGrid>
+	<p:commandButton value="Register" action="#{registerEmployee.register}"
+		update="@form" />
+
+	<p:dataTable var="Employee" value="#{registerEmployee.employees}">
+    <p:column headerText="EMP_ID">
+        <h:outputText value="#{Employee.getEmpId()}" />
+    </p:column>
+ 
+    <p:column headerText="EMP_NAME">
+        <h:outputText value="#{Employee.getEmpName()}" />
+    </p:column>
+ 
+    <p:column headerText="EMP_HIRE_DATE">
+        <h:outputText value="#{Employee.getEmpHireDate()}" />
+    </p:column>
+ 
+    <p:column headerText="EMP_SALARY">
+        <h:outputText value="#{Employee.getEmpSalary()}" />
+    </p:column>
+</p:dataTable>
+
+</h:form>
+</html>

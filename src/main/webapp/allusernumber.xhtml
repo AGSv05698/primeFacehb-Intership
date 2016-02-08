@@ -1,0 +1,70 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<script name="jquery/jquery.js" library="primefaces"></script>
+	<title>Show All User Number</title>
+</h:head>
+<h:form>
+
+	<p:breadCrumb>
+		<p:menuitem value="Index" url="index.xhtml" />
+		<p:menuitem value="ShowAllUserNumber" url="allusernumber.xhtml" />
+	</p:breadCrumb>
+
+	<br />
+	<br />
+	<p:dataTable var="UserPhoneNumber" value="#{addUserNumber.userphonenumbers}">
+
+		<p:column headerText="Number">
+			<h:outputText value="#{UserPhoneNumber.getUserPhoneNumbersId()}" />
+		</p:column>
+
+		<p:column headerText="Number">
+			<h:outputText value="#{UserPhoneNumber.getNo()}" />
+		</p:column>
+
+		<p:column headerText="ID Card Number">
+			<h:outputText value="#{UserPhoneNumber.getIdCardNumber()}" />
+		</p:column>
+
+		<p:column headerText="Type">
+			<h:outputText value="#{UserPhoneNumber.getType()}" />
+		</p:column>
+
+		<p:column headerText="Main Package ID">
+			<h:outputText value="#{UserPhoneNumber.getMainPackage()}" />
+		</p:column>
+		
+		<p:column headerText="Register Date">
+			<h:outputText value="#{UserPhoneNumber.getRegisterDate()}" />
+		</p:column>
+		
+		<p:column headerText="Billing Date">
+			<h:outputText value="#{UserPhoneNumber.getBillingDate()}" />
+		</p:column>
+		
+		<p:column headerText="Is Avtivate?">
+			<h:outputText value="#{UserPhoneNumber.getIsactive()}" />
+		</p:column>
+
+		<p:column headerText="Action">
+			<p:commandButton value="Delete" action="#{addUserNumber.delete}" update="@form">
+				<f:setPropertyActionListener value="#{UserPhoneNumber}" target="#{addUserNumber.userphonenumber}" />
+			</p:commandButton>
+		</p:column>
+
+	</p:dataTable>
+
+	<br />
+	<br />
+	<p:button outcome="addusernumber" value="Register New User Number Here" />
+	<br />
+	<br />
+
+
+</h:form>
+</html>

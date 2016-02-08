@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<script name="jquery/jquery.js" library="primefaces"></script>
+	<title>Show All Number</title>
+</h:head>
+<h:form>
+
+	<p:breadCrumb>
+		<p:menuitem value="Index" url="index.xhtml" />
+		<p:menuitem value="ShowAll" url="showall.xhtml" />
+	</p:breadCrumb>
+
+	<br />
+	<br />
+	<p:dataTable var="PhoneNumber" value="#{addNumber.phonenumbers}">
+
+		<p:column headerText="Number">
+			<h:outputText value="#{PhoneNumber.getNo()}" />
+		</p:column>
+
+		<p:column headerText="Status">
+			<h:outputText value="#{PhoneNumber.getStatus()}" />
+		</p:column>
+
+		<p:column headerText="Created">
+			<h:outputText value="#{PhoneNumber.getCreated()}" />
+		</p:column>
+
+		<p:column headerText="Updated">
+			<h:outputText value="#{PhoneNumber.getUpdated()}" />
+		</p:column>
+
+		<p:column headerText="Description">
+			<h:outputText value="#{PhoneNumber.getDescription()}" />
+		</p:column>
+
+		<p:column headerText="Action">
+			<p:commandButton value="Delete" action="#{addNumber.delete}" update="@form">
+				<f:setPropertyActionListener value="#{PhoneNumber}" target="#{addNumber.phonenumber}" />
+			</p:commandButton>
+		</p:column>
+
+	</p:dataTable>
+
+	<br />
+	<br />
+	<p:button outcome="register" value="Register New Number Here" />
+	<br />
+	<br />
+
+
+</h:form>
+</html>

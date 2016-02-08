@@ -1,0 +1,63 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<script name="jquery/jquery.js" library="primefaces"></script>
+	<title>Register PhoneNumber</title>
+</h:head>
+<h:form>
+
+	<p:breadCrumb>
+		<p:menuitem value="Index" url="index.xhtml" />
+		<p:menuitem value="Register" url="register.xhtml" />
+	</p:breadCrumb>
+	<br />
+	<br />
+	<br />
+
+
+	<p:growl id="messages"></p:growl>
+	<p:panelGrid columns="2">
+		<p:outputLabel value="Enter no:"></p:outputLabel>
+		<p:inputText value="#{addNumber.phoneNumber.no}"></p:inputText>
+
+		<p:outputLabel value="Enter Status:"></p:outputLabel>
+		<p:selectOneMenu id="status" value="#{addNumber.phoneNumber.status}">
+			<p:ajax listener="#{addNumber.phoneNumber.status}" update="status" />
+			<f:selectItem itemLabel="Seclect Status" itemValue=""
+				noSelectionOption="true" />
+			<f:selectItem itemLabel="Activate" itemValue="A"
+				noSelectionOption="true" />
+			<f:selectItem itemLabel="Unable" itemValue="U"
+				noSelectionOption="true" />
+		</p:selectOneMenu>
+
+		<p:outputLabel value="Enter created:"></p:outputLabel>
+		<p:calendar value="#{addNumber.phoneNumber.created}"></p:calendar>
+
+		<p:outputLabel value="Enter updated:"></p:outputLabel>
+		<p:calendar value="#{addNumber.phoneNumber.updated}"></p:calendar>
+
+		<p:outputLabel value="Enter description:"></p:outputLabel>
+		<p:inputText value="#{addNumber.phoneNumber.description}"></p:inputText>
+
+	</p:panelGrid>
+	
+	<br />
+	<br />
+	<p:commandButton value="Register" action="#{addNumber.addNumber}"
+		update="@form" />
+	<br />
+	<br />
+	
+	<p:button outcome="showall" value="Show All Number" />
+	<br />
+	<br />
+	
+	<p:button outcome="index" value="Cancel" />
+
+
+</h:form>
+</html>
